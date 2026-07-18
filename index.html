@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spend 1 Billion Robux</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#111;
+    color:white;
+}
+
+header{
+    background:#00b06f;
+    padding:25px;
+    text-align:center;
+    position:sticky;
+    top:0;
+}
+
+#money{
+    font-size:32px;
+    font-weight:bold;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+    padding:20px;
+}
+
+.card{
+    background:#222;
+    border-radius:15px;
+    padding:15px;
+    text-align:center;
+}
+
+.card img{
+    width:150px;
+    height:150px;
+    object-fit:contain;
+    background:white;
+    border-radius:10px;
+}
+
+button{
+    border:none;
+    padding:10px 18px;
+    border-radius:8px;
+    cursor:pointer;
+    margin:4px;
+    font-size:16px;
+}
+
+.buy{
+    background:#00c853;
+    color:white;
+}
+
+.sell{
+    background:#d32f2f;
+    color:white;
+}
+
+button:disabled{
+    opacity:.4;
+    cursor:not-allowed;
+}
+
+.count{
+    font-size:22px;
+    margin:8px;
+}
+</style>
+</head>
+<body>
+
+<header>
+<h1>Spend Roblox's Robux</h1>
+<div id="money"></div>
+</header>
+
+<div class="grid" id="shop"></div>
+
+<script>
+
+let money=1000000000000000;
+
+const items=[
+
+{
+name:"Dominus Frigidus",
+price:618033988,
+image:"Frigidus.png"
+},
+
+{
+name:"Domino Crown",
+price:68686868686,
+image:"domino.png"
+},
+
+{
+name:"Dominus Empyreus",
+price:618033988,
+image:"dominus.png"
+},
+
+{
+name:"Headless Horseman",
+price:31000,
+image:"headless.png"
+},
+
+{
+name:"Korblox Deathspeaker",
+price:17000,
+image:"korblox.png"
+}
+
+];
+
+//----------------------------
+
+const moneyText=document.getElementById("money");
+const shop=document.getElementById("shop");
+
+function updateMoney(){
+moneyText.innerHTML="💰 "+money.toLocaleString()+" Robux";
+}
+
+function createShop(){
+
+shop.innerHTML="";
+
+items.forEach(item=>{
+
+if(item.amount===undefined)item.amount=0;
+
+const card=document.createElement("div");
+card.className="card";
+
+card.innerHTML=`
+<img src="${item.image}">
+<h2>${item.name}</h2>
+<h3>${item.price.toLocaleString()} Robux</h3>
+
+<button class="sell">Sell</button>
+
+<div class="count">${item.amount}</div>
+
+<button class="buy">Buy</button>
+`;
+
+const sell=card.querySelector(".sell");
+const buy=card.querySelector(".buy");
+const count=card.querySelector(".count");
+
+function refresh(){
+count.innerHTML=item.amount;
+buy.disabled=money<item.price;
+sell.disabled=item.amount===0;
+updateMoney();
+}
+
+buy.onclick=()=>{
+if(money>=item.price){
+money-=item.price;
+item.amount++;
+refresh();
+}
+};
+
+sell.onclick=()=>{
+if(item.amount>0){
+money+=item.price;
+item.amount--;
+refresh();
+}
+};
+
+refresh();
+
+shop.appendChild(card);
+
+});
+
+}
+
+updateMoney();
+createShop();
+
+</script>
+
+</body>
+</html>
