@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roblox DevEx Calculator</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#111827;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.card{
+    width:350px;
+    background:#1f2937;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 0 20px rgba(0,0,0,.4);
+    text-align:center;
+}
+
+h1{
+    margin-top:0;
+    color:#00d4ff;
+}
+
+input{
+    width:100%;
+    padding:12px;
+    font-size:18px;
+    border:none;
+    border-radius:8px;
+    margin:15px 0;
+    box-sizing:border-box;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    font-size:18px;
+    border:none;
+    border-radius:8px;
+    background:#00b06b;
+    color:white;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#00995c;
+}
+
+.result{
+    margin-top:20px;
+    font-size:22px;
+    font-weight:bold;
+}
+
+.small{
+    margin-top:15px;
+    color:#bbb;
+    font-size:14px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1>🎮 Roblox DevEx Calculator</h1>
+
+    <input
+        type="number"
+        id="robux"
+        placeholder="Enter Earned Robux">
+
+    <button onclick="calculate()">
+        Calculate
+    </button>
+
+    <div class="result" id="result">
+        $0.00
+    </div>
+
+    <div class="small">
+        Rate: $0.0038 per Earned Robux
+    </div>
+</div>
+
+<script>
+function calculate(){
+
+    const robux = Number(document.getElementById("robux").value);
+
+    const RATE = 0.0038;
+
+    const usd = robux * RATE;
+
+    document.getElementById("result").innerHTML =
+        "$" + usd.toFixed(2) + " USD";
+}
+</script>
+
+</body>
+</html>
