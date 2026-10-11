@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Watame - Maintenance</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: white;
+      color: black;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    /* Classic top border */
+    .top-line {
+      height: 26px;
+      border-bottom: 1px solid #9ab8d9;
+      box-shadow: 0 2px 0 #ddd;
+    }
+
+    /* Custom Watame logo */
+    .logo {
+      text-align: center;
+      margin-top: 12px;
+      margin-bottom: 12px;
+    }
+
+    .logo img {
+      width: 200px;
+      max-width: 90%;
+      height: auto;
+    }
+
+    /* Main maintenance box */
+    .container {
+      width: 580px;
+      max-width: calc(100% - 30px);
+      margin: 0 auto;
+      border: 1px solid #444;
+      min-height: 313px;
+      text-align: center;
+      box-sizing: border-box;
+    }
+
+    /* Yellow announcement bar */
+    .message {
+      background: #fff3a6;
+      padding: 5px 0 4px;
+      font-size: 12px;
+      font-weight: bold;
+      line-height: 15px;
+    }
+
+    /* Gray redirect bar */
+    .redirect {
+      background: #bcbcbc;
+      font-size: 11px;
+      padding: 2px 0;
+      text-transform: uppercase;
+    }
+
+    /* Oh Noes image */
+    .ohnoes {
+      display: block;
+      width: 361px;
+      max-width: 100%;
+      height: auto;
+      margin: 3px auto 4px;
+    }
+
+    @media (max-width: 600px) {
+      .logo img {
+        width: 180px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="top-line"></div>
+
+  <!-- Custom Watame logo -->
+  <div class="logo">
+    <img src="Watame.png" alt="Watame Logo">
+  </div>
+
+  <!-- Maintenance page -->
+  <div class="container">
+
+    <div class="message">
+      We are upgrading WATAME!<br>
+      Stay tuned... We'll be back online soon.
+    </div>
+
+    <div class="redirect">
+      YOU WILL BE REDIRECTED TO WATAME WHEN WE ARE BACK UP
+    </div>
+
+    <!-- Middle image -->
+    <img
+      class="ohnoes"
+      src="OhNoes.png"
+      alt="Oh Noes!"
+    >
+
+  </div>
+
+</body>
+</html>
